@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t1*(dr2nnxn4h^7=9ytdi*6hdgp(23r!#lx&8zx7oqx_(_mkt%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["moviezoneproject-production.up.railway.app"]
 
 
 # Application definition
