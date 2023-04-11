@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-t1*(dr2nnxn4h^7=9ytdi*6hdgp(23r!#lx&8zx7oqx_(_mkt%
 DEBUG = True
 
 ALLOWED_HOSTS = []
+PORT = 8000
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'moviezone',
     'rest_framework',
+    'corsheaders',
     
 ]
 
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'moviezone_project.urls'
@@ -124,3 +128,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import os
+# settings.py
+IMDB_API_KEY = os.getenv('IMDB_API_KEY')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': 'C:/path/to/django_cache',
+        'TIMEOUT': 3600,
+    }
+}
