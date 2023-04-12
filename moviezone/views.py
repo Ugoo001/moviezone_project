@@ -10,12 +10,12 @@ import os
 def recommend_movies(request):
     # Get genre,title and ratings
     try:
-   
+
         title = request.GET.get('title')
         genres = request.GET.get('genres')
         user_rating = request.GET.get('user_rating')
 
-        imdb_api_key = 'k_i13l1c3r' #add api key here from imdb api
+        imdb_api_key = 'k_026vx761' #add api key here from imdb api
         imdb_url = f'https://imdb-api.com/API/AdvancedSearch/{imdb_api_key}?'
         if title:
             imdb_url += f'title={title}&'
@@ -27,7 +27,7 @@ def recommend_movies(request):
         if not genres and not title and not user_rating:
             return Response({'message': 'Add a valid parameter, genres,title or user_rating'})
         if genres and title and user_rating == None:
-            return Response({'message': 'Invalid input. Please provide a valid user rating.'})
+            return Response({'message': 'Invalid input.'})
         imdb_response = requests.get(imdb_url)
         imdb_data = imdb_response.json()
     
@@ -52,7 +52,7 @@ def recommend_movies(request):
                 if trailer_data is not None:
                     recommend_movie_trailer = trailer_data['link']
                     trailer_thumbnail = trailer_data['thumbnailUrl']
-                    trailer_title = trailer_data['videoTitle']
+                    
         
                 netflix_url = f'https://www.netflix.com/search?q={recommended_movie_url}'
                 netflix_response = requests.get(netflix_url)
@@ -62,18 +62,15 @@ def recommend_movies(request):
                                       'image':recommend_movie_image, 
                                       'plot': recommend_movie_plot,
                                       'trailer': recommend_movie_trailer,
-                                      'thumbnail': trailer_thumbnail,
-                                      
-                                      })
+                                      'thumbnail': trailer_thumbnail,})
                 else:
                     return Response({'message': f'Your recommended movie is {recommended_movie}. Movie is not available on netflix', 
                                      'image': recommend_movie_image, 
                                      'plot': recommend_movie_plot,
                                      'trailer': recommend_movie_trailer,
-                                     'thumbnail': trailer_thumbnail,
-                                    })
-                
+                                     'thumbnail': trailer_thumbnail,})
         else:
             return Response({'message': 'No movies found with the given criteria'})    
+            
     except Exception as e:
         return Response({'message': f'Error: {str(e)}'})
