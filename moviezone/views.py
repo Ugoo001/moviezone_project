@@ -51,6 +51,7 @@ def recommend_movies(request):
                 
                 if trailer_data is not None:
                     recommend_movie_trailer = trailer_data['link']
+                    trailer_embed_link = trailer_data['linkEmbed']
                     trailer_thumbnail = trailer_data['thumbnailUrl']
                     
         
