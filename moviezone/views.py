@@ -63,7 +63,7 @@ def recommend_movies(request):
                                       'plot': recommend_movie_plot,
                                       'trailer': recommend_movie_trailer,
                                       'thumbnail': trailer_thumbnail,
-                                      'trailer_title': trailer_title,
+                                      
                                       })
                 else:
                     return Response({'message': f'Your recommended movie is {recommended_movie}. Movie is not available on netflix', 
