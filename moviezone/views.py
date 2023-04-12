@@ -63,12 +63,14 @@ def recommend_movies(request):
                                       'image':recommend_movie_image, 
                                       'plot': recommend_movie_plot,
                                       'trailer': recommend_movie_trailer,
+                                      'trailer_embed': trailer_embed_link,
                                       'thumbnail': trailer_thumbnail,})
                 else:
                     return Response({'message': f'Your recommended movie is {recommended_movie}. Movie is not available on netflix', 
                                      'image': recommend_movie_image, 
                                      'plot': recommend_movie_plot,
                                      'trailer': recommend_movie_trailer,
+                                     'trailer_embed': trailer_embed_link,
                                      'thumbnail': trailer_thumbnail,})
         else:
             return Response({'message': 'No movies found with the given criteria'})    
