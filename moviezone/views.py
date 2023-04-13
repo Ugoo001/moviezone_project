@@ -15,7 +15,7 @@ def recommend_movies(request):
         genres = request.GET.get('genres')
         user_rating = request.GET.get('user_rating')
 
-        imdb_api_key = 'k_i13l1c3r' #add api key here from imdb api
+        imdb_api_key = 'k_t46ii1mi' #add api key here from imdb api
         imdb_url = f'https://imdb-api.com/API/AdvancedSearch/{imdb_api_key}?'
         if title:
             imdb_url += f'title={title}&'
