@@ -2,9 +2,12 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.cache import cache_page
+from dotenv import load_dotenv, find_dotenv
 import requests
 import os
 # Create your views here.
+
+load_dotenv(find_dotenv())
 @cache_page(3600) # Cache the response for 1 hour (60*60)
 @api_view(['GET'])
 def recommend_movies(request):
@@ -15,7 +18,7 @@ def recommend_movies(request):
         genres = request.GET.get('genres')
         user_rating = request.GET.get('user_rating')
 
-        imdb_api_key = 'k_t46ii1mi' #add api key here from imdb api
+        imdb_api_key = os.getenv("API_KEY") #add api key here from imdb api
         imdb_url = f'https://imdb-api.com/API/AdvancedSearch/{imdb_api_key}?'
         if title:
             imdb_url += f'title={title}&'
