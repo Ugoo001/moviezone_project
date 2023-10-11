@@ -52,7 +52,7 @@ Error Handling
 The application includes error handling to catch and display any exceptions that may occur during the process. If an error occurs, the API response will include an error message.
 
 API Key
-To use the IMDb API, you need to obtain an API key from IMDb. You should replace the placeholder 'k_t46ii1mi' with your own API key in the imdb_api_key variable within the views.py file.
+To use the IMDb API, you need to obtain an API key from IMDb. Add your own API key in the imdb_api_key variable within the views.py file.
 
 Contributing
 Contributions to the Moviezone project are welcome. If you have any suggestions, bug fixes, or improvements, please create a pull request. Ensure that your code adheres to the project's coding standards and guidelines.
